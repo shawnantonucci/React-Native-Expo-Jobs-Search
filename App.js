@@ -1,15 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
+import AuthScreen from './screens/AuthScreen';
+import WelcomeScreen from './screens/WelcomeScreen';
 
-      </View>
-    );
-  }
-}
+const MainNavigator = createBottomTabNavigator({
+  welcome: { screen: WelcomeScreen },
+  auth: { screen: AuthScreen },
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -19,3 +18,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+const AppContainer = createAppContainer(MainNavigator);
+ 
+class App extends React.Component {
+  render() {
+    return (
+      <View>
+        <AppContainer />
+      </View>
+    );
+  }
+}
+ 
+ 
+export default AppContainer;
