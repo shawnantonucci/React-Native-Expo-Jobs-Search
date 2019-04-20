@@ -5,7 +5,8 @@ import {
   createAppContainer,
   createStackNavigator
 } from "react-navigation";
-import { Provider } from "react-redux";
+import { Provider } from 'react-redux';
+import { connect } from 'react-redux';
 
 import store from "./store";
 import AuthScreen from "./screens/AuthScreen";

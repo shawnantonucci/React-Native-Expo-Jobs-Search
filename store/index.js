@@ -1,13 +1,14 @@
-import { createStore, compose, applyMiddleware } from 'redux'
+import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import reducers from '../reducers'
+import { AsyncStorage } from 'react-native';
+import reducers from '../reducers';
 
 const store = createStore(
-    reducers,
-    {},
-    compose(
-        applyMiddleware(thunk)
-    )
+  reducers,
+  {},
+  compose(
+    applyMiddleware(thunk)
+  )
 );
 
 export default store;
