@@ -1,13 +1,19 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { createBottomTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import {
+  createBottomTabNavigator,
+  createAppContainer,
+  createStackNavigator
+} from "react-navigation";
+import { Provider } from "react-redux";
 
-import AuthScreen from './screens/AuthScreen';
-import WelcomeScreen from './screens/WelcomeScreen';
-import MapScreen from './screens/MapScreen';
-import DeckScreen from './screens/DeckScreen';
-import ReviewScreen from './screens/ReviewScreen';
-import SettingsScreen from './screens/SettingsScreen';
+import store from "./store";
+import AuthScreen from "./screens/AuthScreen";
+import WelcomeScreen from "./screens/WelcomeScreen";
+import MapScreen from "./screens/MapScreen";
+import DeckScreen from "./screens/DeckScreen";
+import ReviewScreen from "./screens/ReviewScreen";
+import SettingsScreen from "./screens/SettingsScreen";
 
 const MainNavigator = createBottomTabNavigator({
   welcome: { screen: WelcomeScreen },
@@ -19,7 +25,7 @@ const MainNavigator = createBottomTabNavigator({
       review: {
         screen: createStackNavigator({
           review: { screen: ReviewScreen },
-          settings: { screen: SettingsScreen },
+          settings: { screen: SettingsScreen }
         })
       }
     })
@@ -29,23 +35,24 @@ const MainNavigator = createBottomTabNavigator({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
+  }
 });
 
 const AppContainer = createAppContainer(MainNavigator);
- 
+
 class App extends React.Component {
   render() {
     return (
-      <View>
-        <AppContainer />
-      </View>
+      <Provider store={store}>
+        <View>
+          <AppContainer />
+        </View>
+      </Provider>
     );
   }
 }
- 
- 
+
 export default AppContainer;
