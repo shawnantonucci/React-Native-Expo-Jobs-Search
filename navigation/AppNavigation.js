@@ -35,6 +35,8 @@ const MainNavigator = createAppContainer(
         })
       })
     }
+  }, {
+    backBehavior: 'home'
   })
 );
 
